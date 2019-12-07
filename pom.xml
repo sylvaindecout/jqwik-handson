@@ -21,6 +21,7 @@
         <mockito.version>2.28.2</mockito.version>
         <assertj.version>3.14.0</assertj.version>
         <jqwik.version>1.2.1</jqwik.version>
+        <archunit.version>0.12.0</archunit.version>
         <lombok.version>1.18.10</lombok.version>
         <guava.version>28.1-jre</guava.version>
     </properties>
@@ -55,6 +56,18 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5-api</artifactId>
+            <version>${archunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5-engine</artifactId>
+            <version>${archunit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
