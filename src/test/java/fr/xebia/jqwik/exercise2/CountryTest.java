@@ -1,6 +1,8 @@
 package fr.xebia.jqwik.exercise2;
 
-import org.junit.jupiter.api.Test;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
+import net.jqwik.api.constraints.StringLength;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,22 +13,22 @@ import static org.assertj.core.api.Assertions.*;
  */
 class CountryTest {
 
-    @Test
-    void should_initialize_from_code_with_exactly_2_characters() {
-        assertThat(new Country("FR").code()).isEqualTo("FR");
+    @Property
+    void should_initialize_from_code_with_exactly_2_characters(@ForAll @StringLength(2) String code) {
+        assertThat(new Country(code).code()).isEqualTo(code);
     }
 
-    @Test
-    void should_fail_to_initialize_from_code_with_more_than_2_characters() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Country("FRA"));
+    @Property
+    void should_fail_to_initialize_from_code_with_more_than_2_characters(@ForAll @StringLength(min = 3) String code) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Country(code));
     }
 
-    @Test
-    void should_fail_to_initialize_from_code_with_less_than_2_characters() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Country("F"));
+    @Property
+    void should_fail_to_initialize_from_code_with_less_than_2_characters(@ForAll @StringLength(max = 1) String code) {
+        assertThatIllegalArgumentException().isThrownBy(() -> new Country(code));
     }
 
-    @Test
+    @Property
     void should_fail_to_initialize_from_null_code() {
         assertThatNullPointerException().isThrownBy(() -> new Country(null));
     }
