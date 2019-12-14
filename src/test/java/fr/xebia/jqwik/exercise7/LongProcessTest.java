@@ -1,6 +1,7 @@
 package fr.xebia.jqwik.exercise7;
 
-import org.junit.jupiter.api.Test;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,9 +14,8 @@ class LongProcessTest {
 
     private final LongProcess longProcess = new LongProcess();
 
-    @Test
-    void should_yield_input_parameter() throws InterruptedException {
-        final var parameter = "The parameter";
+    @Property(tries = 1)
+    void should_yield_input_parameter(@ForAll String parameter) throws InterruptedException {
         assertThat(longProcess.thisProcessIsSoLongYouWouldHardlyBelieveIt(parameter))
                 .isEqualTo(parameter);
     }
