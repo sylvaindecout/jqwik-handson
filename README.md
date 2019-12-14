@@ -34,3 +34,8 @@ Add complex parameter to property-based test by defining a simple arbitrary prov
 
 ### 5. Complex parameter constraints
 Combine parameters of property-based test by defining a complex arbitrary provider as well as custom annotations.
+
+### 6. Dependent parameters
+Add a property-based test for a method with dependent arguments, by relying on existing arbitrary providers.
+
+![Use case: Incident coverage](docs/images/UseCase-Exercise6.png)
