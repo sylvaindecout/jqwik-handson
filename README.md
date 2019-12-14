@@ -31,3 +31,6 @@ Add basic parameter to property-based test by defining a parameter provider meth
 
 ### 4. Complex providers
 Add complex parameter to property-based test by defining a simple arbitrary provider.
+
+### 5. Complex parameter constraints
+Combine parameters of property-based test by defining a complex arbitrary provider as well as custom annotations.
