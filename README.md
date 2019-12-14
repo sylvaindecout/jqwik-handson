@@ -23,3 +23,8 @@ Create property-based tests for a method with null-checks.
 
 ### 2. Basic parameter constraints
 Create property-based tests for a value object with basic validity constraints.
+
+### 3. Basic providers
+Add basic parameter to property-based test by defining a parameter provider method.
+
+![Use case: Alert routing](docs/images/UseCase-Exercise3.png)
