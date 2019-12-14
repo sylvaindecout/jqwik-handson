@@ -39,3 +39,6 @@ Combine parameters of property-based test by defining a complex arbitrary provid
 Add a property-based test for a method with dependent arguments, by relying on existing arbitrary providers.
 
 ![Use case: Incident coverage](docs/images/UseCase-Exercise6.png)
+
+### 7. Configuration
+Adapt property-based test to long method execution time.
