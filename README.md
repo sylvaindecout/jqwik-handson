@@ -20,3 +20,6 @@ Prerequisite: Java 8+
 
 ### 1. Basic properties
 Create property-based tests for a method with null-checks.
+
+### 2. Basic parameter constraints
+Create property-based tests for a value object with basic validity constraints.
