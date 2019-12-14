@@ -17,3 +17,6 @@ Prerequisite: Java 8+
 5. Complex parameter constraints
 6. Dependent parameters
 7. Configuration
+
+### 1. Basic properties
+Create property-based tests for a method with null-checks.
