@@ -1,11 +1,8 @@
 package fr.xebia.jqwik.exercise5;
 
-import net.jqwik.api.Assume;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.lifecycle.BeforeTry;
-
-import java.util.Objects;
 
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
@@ -56,11 +53,7 @@ class AlertRoutingServiceTest {
      * <p>Hint #2: You can define a custom annotation in order to generate alerts for standard countries only. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#create-your-own-annotations-for-arbitrary-configuration">Create your own annotations for arbitrary configuration</a></p>
      */
     @Property
-    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type, @ForAll Country country) {
-        Assume.that(! Objects.equals(country, ITALY));
-        Assume.that(! Objects.equals(country, USA));
-        final var alert = new Alert(type, country);
-
+    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll @StandardCountry Alert alert) {
         routingService.send(alert);
 
         then(notificationServiceForItaly).shouldHaveNoInteractions();
