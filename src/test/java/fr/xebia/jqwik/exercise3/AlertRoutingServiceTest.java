@@ -1,14 +1,22 @@
 package fr.xebia.jqwik.exercise3;
 
+import net.jqwik.api.Arbitrary;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
+import net.jqwik.api.Provide;
 import net.jqwik.api.lifecycle.BeforeTry;
 
+import java.util.Collection;
+
+import static java.util.Arrays.asList;
+import static net.jqwik.api.Arbitraries.strings;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
 
 class AlertRoutingServiceTest {
+
+    private static final Collection<String> COUNTRIES_WITH_SPECIFIC_SERVICES = asList("IT", "US");
 
     private final NotificationServiceForItaly notificationServiceForItaly = mock(NotificationServiceForItaly.class);
     private final NotificationServiceForUsa notificationServiceForUsa = mock(NotificationServiceForUsa.class);
@@ -50,8 +58,7 @@ class AlertRoutingServiceTest {
      * <p>Hint #2: Modify provider method so that it never yields non-standard countries. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#filtering">Filtering</a></p>
      */
     @Property
-    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type) {
-        final var country = "JP";
+    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type, @ForAll("standardCountries") String country) {
         final var alert = new Alert(type, country);
 
         routingService.send(alert);
@@ -59,6 +66,12 @@ class AlertRoutingServiceTest {
         then(notificationServiceForItaly).shouldHaveNoInteractions();
         then(notificationServiceForUsa).shouldHaveNoInteractions();
         then(defaultNotificationService).should().notify(type.getDefaultMessage());
+    }
+
+    @Provide
+    Arbitrary<String> standardCountries() {
+        return strings()
+                .filter(code -> !COUNTRIES_WITH_SPECIFIC_SERVICES.contains(code));
     }
 
 }
