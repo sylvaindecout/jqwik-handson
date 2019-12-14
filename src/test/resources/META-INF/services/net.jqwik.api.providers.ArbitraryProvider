@@ -1,1 +1,10 @@
 fr.xebia.jqwik.exercise5.CountryArbitraryProvider
+
+fr.xebia.jqwik.exercise6.ContractArbitraryProvider
+fr.xebia.jqwik.exercise6.CountryArbitraryProvider
+fr.xebia.jqwik.exercise6.IncidentArbitraryProvider
+fr.xebia.jqwik.exercise6.InstantArbitraryProvider
+fr.xebia.jqwik.exercise6.PolicyNumberArbitraryProvider
+fr.xebia.jqwik.exercise6.ValiditySpanArbitraryProvider
+fr.xebia.jqwik.exercise6.VehicleArbitraryProvider
+fr.xebia.jqwik.exercise6.VehicleTypeArbitraryProvider
