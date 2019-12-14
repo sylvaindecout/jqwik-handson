@@ -1,6 +1,7 @@
 package fr.xebia.jqwik.exercise1;
 
-import org.junit.jupiter.api.Test;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
@@ -12,36 +13,30 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
  */
 class UnavailableArticleQuantityExceptionTest {
 
-    private static final String VALID_ARTICLE = "BOOK00001";
-    private static final Integer VALID_QUANTITY = 13;
-
-    @Test
-    void should_initialize_exception_with_explicit_message() {
-        final var requestedArticle = "BOOK00001";
-        final var requestedQuantity = 12;
-        final var availableQuantity = 2;
+    @Property
+    void should_initialize_exception_with_explicit_message(@ForAll String requestedArticle, @ForAll int requestedQuantity, @ForAll int availableQuantity) {
         final var exception = new UnavailableArticleQuantityException(requestedArticle, requestedQuantity, availableQuantity);
         assertThat(exception)
                 .hasMessage("Requested quantity (%s) is unavailable for article '%s' (available: %s)",
                         requestedQuantity, requestedArticle, availableQuantity);
     }
 
-    @Test
-    void should_fail_to_initialize_exception_if_requested_article_is_missing() {
+    @Property
+    void should_fail_to_initialize_exception_if_requested_article_is_missing(@ForAll int requestedQuantity, @ForAll int availableQuantity) {
         assertThatNullPointerException().isThrownBy(() ->
-                new UnavailableArticleQuantityException(null, VALID_QUANTITY, VALID_QUANTITY));
+                new UnavailableArticleQuantityException(null, requestedQuantity, availableQuantity));
     }
 
-    @Test
-    void should_fail_to_initialize_exception_if_requested_quantity_is_missing() {
+    @Property
+    void should_fail_to_initialize_exception_if_requested_quantity_is_missing(@ForAll String requestedArticle, @ForAll int availableQuantity) {
         assertThatNullPointerException().isThrownBy(() ->
-                new UnavailableArticleQuantityException(VALID_ARTICLE, null, VALID_QUANTITY));
+                new UnavailableArticleQuantityException(requestedArticle, null, availableQuantity));
     }
 
-    @Test
-    void should_fail_to_initialize_exception_if_available_quantity_is_missing() {
+    @Property
+    void should_fail_to_initialize_exception_if_available_quantity_is_missing(@ForAll String requestedArticle, @ForAll int requestedQuantity) {
         assertThatNullPointerException().isThrownBy(() ->
-                new UnavailableArticleQuantityException(VALID_ARTICLE, VALID_QUANTITY, null));
+                new UnavailableArticleQuantityException(requestedArticle, requestedQuantity, null));
     }
 
 }
