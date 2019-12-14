@@ -1,9 +1,13 @@
 package fr.xebia.jqwik.exercise4;
 
+import net.jqwik.api.Assume;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 import net.jqwik.api.lifecycle.BeforeTry;
 
+import java.util.Collection;
+
+import static java.util.Arrays.asList;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.reset;
@@ -12,6 +16,7 @@ class AlertRoutingServiceTest {
 
     private static final Country ITALY = new Country("IT");
     private static final Country USA = new Country("US");
+    private static final Collection<Country> COUNTRIES_WITH_SPECIFIC_SERVICES = asList(ITALY, USA);
 
     private final NotificationServiceForItaly notificationServiceForItaly = mock(NotificationServiceForItaly.class);
     private final NotificationServiceForUsa notificationServiceForUsa = mock(NotificationServiceForUsa.class);
@@ -53,8 +58,8 @@ class AlertRoutingServiceTest {
      * <p>Hint #2: You can use assumptions in order to skip generated values that do not match standard countries. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
      */
     @Property
-    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type) {
-        final var country = new Country("JP");
+    void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type, @ForAll Country country) {
+        Assume.that(!COUNTRIES_WITH_SPECIFIC_SERVICES.contains(country));
         final var alert = new Alert(type, country);
 
         routingService.send(alert);
