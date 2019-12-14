@@ -28,3 +28,6 @@ Create property-based tests for a value object with basic validity constraints.
 Add basic parameter to property-based test by defining a parameter provider method.
 
 ![Use case: Alert routing](docs/images/UseCase-Exercise3.png)
+
+### 4. Complex providers
+Add complex parameter to property-based test by defining a simple arbitrary provider.
