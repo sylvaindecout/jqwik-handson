@@ -39,7 +39,8 @@ class AlertRoutingServiceTest {
      * TODO: Add country as an argument of the test method, so that the test does not rely on an example.
      * <br/>
      * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#parameter-provider-methods">Parameter provider methods</a></p>
-     * <p>Hint #2: Calling Mockito.reset(defaultNotificationService) is necessary, and it does not work from JUnit-lifecycle methods :(</p>
+     * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#filtering">Filtering</a></p>
+     * <p>Hint #3: Calling Mockito.reset(defaultNotificationService) is necessary, and it does not work from JUnit-lifecycle methods :(</p>
      */
     @Property
     void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type) {
