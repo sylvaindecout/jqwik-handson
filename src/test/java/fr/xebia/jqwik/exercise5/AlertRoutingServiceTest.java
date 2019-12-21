@@ -41,7 +41,7 @@ class AlertRoutingServiceTest {
     }
 
     /**
-     * TODO: Fix test so that it does not have to initialize alerts.
+     * TODO: Define alert as an argument to the test method, instead of type and country.
      * <br/>
      * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#combining-arbitraries">Combining arbitraries</a></p>
      * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#create-your-own-annotations-for-arbitrary-configuration">Create your own annotations for arbitrary configuration</a></p>
