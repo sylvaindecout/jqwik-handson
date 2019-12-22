@@ -17,6 +17,7 @@ Prerequisite: Java 8+
 5. Complex parameter constraints
 6. Dependent parameters
 7. Configuration
+8. Borderline cases
 
 ### 1. Basic properties
 Create property-based tests for a method with null-checks.
@@ -42,3 +43,9 @@ Add a property-based test for a method with dependent arguments, by relying on e
 
 ### 7. Configuration
 Adapt property-based test to long method execution time.
+
+### 8. Borderline cases
+Define property-based tests in a case for which it is not so straightforward.
+Consider trade-offs and how you may want to use property-based testing in conjunction with example-based testing.
+
+![Use case: Borderline cases](docs/images/UseCase-Exercise8.png)
