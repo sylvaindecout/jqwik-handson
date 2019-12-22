@@ -8,3 +8,9 @@ fr.xebia.jqwik.exercise6.PolicyNumberArbitraryProvider
 fr.xebia.jqwik.exercise6.ValiditySpanArbitraryProvider
 fr.xebia.jqwik.exercise6.VehicleArbitraryProvider
 fr.xebia.jqwik.exercise6.VehicleTypeArbitraryProvider
+
+fr.xebia.jqwik.exercise8.ContractArbitraryProvider
+fr.xebia.jqwik.exercise8.CoordinatesArbitraryProvider
+fr.xebia.jqwik.exercise8.DistanceArbitraryProvider
+fr.xebia.jqwik.exercise8.GarageArbitraryProvider
+fr.xebia.jqwik.exercise8.LocationArbitraryProvider
