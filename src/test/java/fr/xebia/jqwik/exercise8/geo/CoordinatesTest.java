@@ -1,5 +1,6 @@
 package fr.xebia.jqwik.exercise8.geo;
 
+import net.jqwik.api.Example;
 import fr.xebia.jqwik.exercise8.geo.Coordinates.Latitude;
 import fr.xebia.jqwik.exercise8.geo.Coordinates.Longitude;
 import net.jqwik.api.ForAll;
@@ -7,7 +8,6 @@ import net.jqwik.api.Group;
 import net.jqwik.api.Property;
 import net.jqwik.api.constraints.DoubleRange;
 import net.jqwik.api.constraints.Negative;
-import org.junit.jupiter.api.Test;
 
 import static java.lang.Math.toRadians;
 import static org.assertj.core.api.Assertions.*;
@@ -57,14 +57,29 @@ class CoordinatesTest {
      * <p>Hint #1: Accept that Property-Based Testing is not always the best way. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#creating-an-example-based-test">Creating an Example-based Test</a></p>
      * <p>Hint #2: You should consider other properties, for which examples were not relevant. For instance, does the operation work for all sets of coordinates? Is it commutative? etc.</p>
      */
-    @Test
-    void should_compute_distance_between_Chateaudun_and_Tours() {
-        assertThat(CHATEAUDUN.distanceTo(TOURS)).isEqualTo(Distance.fromMeters(91_768));
-    }
+    @Group
+    class DistanceResolution {
 
-    @Test
-    void should_compute_distance_between_Ulm_and_Bremen() {
-        assertThat(ULM.distanceTo(BREMEN)).isEqualTo(Distance.fromMeters(526_641));
+        @Property
+        void should_resolve_valid_distance(@ForAll Coordinates coordinates1, @ForAll Coordinates coordinates2) {
+            assertThat(coordinates1.distanceTo(coordinates2).error()).isFalse();
+        }
+
+        @Property
+        void should_resolve_distance_commutatively(@ForAll Coordinates coordinates1, @ForAll Coordinates coordinates2) {
+            assertThat(coordinates1.distanceTo(coordinates2))
+                    .isEqualTo(coordinates2.distanceTo(coordinates1));
+        }
+
+        @Example
+        void should_compute_distance_between_Chateaudun_and_Tours() {
+            assertThat(CHATEAUDUN.distanceTo(TOURS)).isEqualTo(Distance.fromMeters(91_768));
+        }
+
+        @Example
+        void should_compute_distance_between_Ulm_and_Bremen() {
+            assertThat(ULM.distanceTo(BREMEN)).isEqualTo(Distance.fromMeters(526_641));
+        }
     }
 
     @Group
