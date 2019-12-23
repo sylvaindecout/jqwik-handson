@@ -14,13 +14,13 @@ public final class LatitudeArbitraryProvider
 
     @Override
     public boolean canProvideFor(final TypeUsage targetType) {
-        return targetType.isOfType(Latitude.class);
+        return targetType.isOfType(Coordinates.Latitude.class);
     }
 
     @Override
     public Set<Arbitrary<?>> provideFor(final TypeUsage targetType, final SubtypeProvider subtypeProvider) {
         return singleton(
-                doubles().between(0, 90).map(Latitude::fromDegrees)
+                doubles().between(0, 90).map(Coordinates.Latitude::fromDegrees)
         );
     }
 }

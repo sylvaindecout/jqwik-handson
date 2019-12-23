@@ -14,7 +14,7 @@ public final class LongitudeArbitraryProvider
 
     @Override
     public boolean canProvideFor(final TypeUsage targetType) {
-        return targetType.isOfType(Longitude.class);
+        return targetType.isOfType(Coordinates.Longitude.class);
     }
 
     @Override
@@ -23,7 +23,7 @@ public final class LongitudeArbitraryProvider
                 doubles()
                         .between(-180, 180)
                         .filter(value -> value.compareTo(-180.) > 0)
-                        .map(Longitude::fromDegrees)
+                        .map(Coordinates.Longitude::fromDegrees)
         );
     }
 }

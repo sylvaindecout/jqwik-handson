@@ -22,8 +22,8 @@ public final class CoordinatesArbitraryProvider
     public Set<Arbitrary<?>> provideFor(final TypeUsage targetType, final SubtypeProvider subtypeProvider) {
         return singleton(
                 combine(
-                        defaultFor(Latitude.class),
-                        defaultFor(Longitude.class)
+                        defaultFor(Coordinates.Latitude.class),
+                        defaultFor(Coordinates.Longitude.class)
                 ).as(Coordinates::new)
         );
     }
