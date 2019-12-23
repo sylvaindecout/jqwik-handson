@@ -1,7 +1,7 @@
-package fr.xebia.jqwik.exercise8;
+package fr.xebia.jqwik.exercise8.geo;
 
-import fr.xebia.jqwik.exercise8.Coordinates.Latitude;
-import fr.xebia.jqwik.exercise8.Coordinates.Longitude;
+import fr.xebia.jqwik.exercise8.geo.Coordinates.Latitude;
+import fr.xebia.jqwik.exercise8.geo.Coordinates.Longitude;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Group;
 import net.jqwik.api.Property;

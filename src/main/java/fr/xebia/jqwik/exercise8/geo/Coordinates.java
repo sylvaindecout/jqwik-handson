@@ -1,4 +1,4 @@
-package fr.xebia.jqwik.exercise8;
+package fr.xebia.jqwik.exercise8.geo;
 
 import com.google.common.collect.Range;
 import lombok.AllArgsConstructor;
@@ -12,14 +12,14 @@ import static java.lang.String.format;
 import static lombok.AccessLevel.PRIVATE;
 
 @Value
-final class Coordinates {
+public final class Coordinates {
 
     private static final double EARTH_RADIUS = 6371.01;
 
     @NonNull Latitude latitude;
     @NonNull Longitude longitude;
 
-    static Coordinates fromDegrees(final double lat, final double lng) {
+    public static Coordinates fromDegrees(final double lat, final double lng) {
         return new Coordinates(Latitude.fromDegrees(lat), Longitude.fromDegrees(lng));
     }
 
@@ -36,7 +36,7 @@ final class Coordinates {
 
     @EqualsAndHashCode
     @AllArgsConstructor(access = PRIVATE)
-    static final class Latitude {
+    public static final class Latitude {
 
         private static final Range<Double> VALID_RANGE = Range.closed(0., 90.);
 
@@ -49,7 +49,7 @@ final class Coordinates {
             return new Latitude(degrees, toRadians(degrees));
         }
 
-        double asDegrees() {
+        public double asDegrees() {
             return this.degrees;
         }
 
@@ -65,7 +65,7 @@ final class Coordinates {
 
     @EqualsAndHashCode
     @AllArgsConstructor(access = PRIVATE)
-    static final class Longitude {
+    public static final class Longitude {
 
         private static final Range<Double> VALID_RANGE = Range.openClosed(-180., 180.);
 
@@ -78,7 +78,7 @@ final class Coordinates {
             return new Longitude(degrees, toRadians(degrees));
         }
 
-        double asDegrees() {
+        public double asDegrees() {
             return this.degrees;
         }
 

@@ -1,12 +1,13 @@
 package fr.xebia.jqwik.exercise8;
 
+import fr.xebia.jqwik.exercise8.geo.Distance;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
 
 import java.util.Map;
 
-import static fr.xebia.jqwik.exercise8.Distance.ZERO;
+import static fr.xebia.jqwik.exercise8.geo.Distance.ZERO;
 
 @Value
 @Builder

@@ -1,5 +1,6 @@
 package fr.xebia.jqwik.exercise8;
 
+import fr.xebia.jqwik.exercise8.geo.Distance;
 import net.jqwik.api.Arbitrary;
 import net.jqwik.api.providers.ArbitraryProvider;
 import net.jqwik.api.providers.TypeUsage;

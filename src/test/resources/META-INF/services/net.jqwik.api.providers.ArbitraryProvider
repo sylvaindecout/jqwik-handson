@@ -10,9 +10,9 @@ fr.xebia.jqwik.exercise6.VehicleArbitraryProvider
 fr.xebia.jqwik.exercise6.VehicleTypeArbitraryProvider
 
 fr.xebia.jqwik.exercise8.ContractArbitraryProvider
-fr.xebia.jqwik.exercise8.CoordinatesArbitraryProvider
-fr.xebia.jqwik.exercise8.DistanceArbitraryProvider
 fr.xebia.jqwik.exercise8.GarageArbitraryProvider
-fr.xebia.jqwik.exercise8.LatitudeArbitraryProvider
 fr.xebia.jqwik.exercise8.LocationArbitraryProvider
-fr.xebia.jqwik.exercise8.LongitudeArbitraryProvider
+fr.xebia.jqwik.exercise8.geo.CoordinatesArbitraryProvider
+fr.xebia.jqwik.exercise8.geo.DistanceArbitraryProvider
+fr.xebia.jqwik.exercise8.geo.LatitudeArbitraryProvider
+fr.xebia.jqwik.exercise8.geo.LongitudeArbitraryProvider

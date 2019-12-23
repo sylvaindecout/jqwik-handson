@@ -1,6 +1,7 @@
 package fr.xebia.jqwik.exercise8;
 
 
+import fr.xebia.jqwik.exercise8.geo.Coordinates;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 

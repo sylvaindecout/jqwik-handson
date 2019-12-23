@@ -1,5 +1,7 @@
 package fr.xebia.jqwik.exercise8;
 
+import fr.xebia.jqwik.exercise8.geo.Coordinates;
+import fr.xebia.jqwik.exercise8.geo.Distance;
 import org.junit.jupiter.api.Test;
 
 import java.util.Optional;

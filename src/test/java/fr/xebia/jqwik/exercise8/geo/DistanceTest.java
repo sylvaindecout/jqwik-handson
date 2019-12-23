@@ -1,4 +1,4 @@
-package fr.xebia.jqwik.exercise8;
+package fr.xebia.jqwik.exercise8.geo;
 
 import net.jqwik.api.Assume;
 import net.jqwik.api.ForAll;
@@ -9,8 +9,8 @@ import net.jqwik.api.constraints.LongRange;
 import net.jqwik.api.constraints.Negative;
 import net.jqwik.api.constraints.Scale;
 
-import static fr.xebia.jqwik.exercise8.Distance.ERROR;
-import static fr.xebia.jqwik.exercise8.Distance.ZERO;
+import static fr.xebia.jqwik.exercise8.geo.Distance.ERROR;
+import static fr.xebia.jqwik.exercise8.geo.Distance.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 

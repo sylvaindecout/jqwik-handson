@@ -1,5 +1,6 @@
 package fr.xebia.jqwik.exercise8;
 
+import fr.xebia.jqwik.exercise8.geo.Distance;
 import lombok.Builder;
 import lombok.Value;
 

@@ -1,4 +1,4 @@
-package fr.xebia.jqwik.exercise8;
+package fr.xebia.jqwik.exercise8.geo;
 
 import net.jqwik.api.Arbitrary;
 import net.jqwik.api.providers.ArbitraryProvider;
@@ -7,23 +7,24 @@ import net.jqwik.api.providers.TypeUsage;
 import java.util.Set;
 
 import static java.util.Collections.singleton;
-import static net.jqwik.api.Arbitraries.doubles;
+import static net.jqwik.api.Arbitraries.defaultFor;
+import static net.jqwik.api.Combinators.combine;
 
-public final class LongitudeArbitraryProvider
+public final class CoordinatesArbitraryProvider
         implements ArbitraryProvider {
 
     @Override
     public boolean canProvideFor(final TypeUsage targetType) {
-        return targetType.isOfType(Coordinates.Longitude.class);
+        return targetType.isOfType(Coordinates.class);
     }
 
     @Override
     public Set<Arbitrary<?>> provideFor(final TypeUsage targetType, final SubtypeProvider subtypeProvider) {
         return singleton(
-                doubles()
-                        .between(-180, 180)
-                        .filter(value -> value.compareTo(-180.) > 0)
-                        .map(Coordinates.Longitude::fromDegrees)
+                combine(
+                        defaultFor(Coordinates.Latitude.class),
+                        defaultFor(Coordinates.Longitude.class)
+                ).as(Coordinates::new)
         );
     }
 }

@@ -1,10 +1,11 @@
 package fr.xebia.jqwik.exercise8;
 
+import fr.xebia.jqwik.exercise8.geo.Distance;
 import net.jqwik.api.Assume;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Property;
 
-import static fr.xebia.jqwik.exercise8.Distance.ZERO;
+import static fr.xebia.jqwik.exercise8.geo.Distance.ZERO;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ContractTest {

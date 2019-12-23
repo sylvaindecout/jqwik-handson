@@ -1,4 +1,4 @@
-package fr.xebia.jqwik.exercise8;
+package fr.xebia.jqwik.exercise8.geo;
 
 import net.jqwik.api.Arbitrary;
 import net.jqwik.api.providers.ArbitraryProvider;
