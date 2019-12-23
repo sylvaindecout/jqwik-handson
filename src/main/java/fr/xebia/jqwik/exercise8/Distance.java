@@ -19,7 +19,14 @@ final class Distance {
 
     static Distance fromMeters(final long meters) {
         checkArgument(meters >= 0,
-                "Distance must be positive (input value: %s)", meters);
+                "Distance must be positive (input value: %s meters)", meters);
+        return new Distance(meters, false);
+    }
+
+    static Distance fromKilometers(final double kilometers) {
+        checkArgument(kilometers >= 0,
+                "Distance must be positive (input value: %s km)", kilometers);
+        final long meters = Double.valueOf(kilometers * 1_000).longValue();
         return new Distance(meters, false);
     }
 

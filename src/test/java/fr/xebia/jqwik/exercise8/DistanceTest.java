@@ -4,8 +4,10 @@ import net.jqwik.api.Assume;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Group;
 import net.jqwik.api.Property;
+import net.jqwik.api.constraints.DoubleRange;
 import net.jqwik.api.constraints.LongRange;
 import net.jqwik.api.constraints.Negative;
+import net.jqwik.api.constraints.Scale;
 
 import static fr.xebia.jqwik.exercise8.Distance.ERROR;
 import static fr.xebia.jqwik.exercise8.Distance.ZERO;
@@ -23,10 +25,26 @@ class DistanceTest {
         }
 
         @Property
-        void should_fail_to_initialize_from_negative_value(@ForAll @Negative long value) {
+        void should_fail_to_initialize_from_negative_value_in_meters(@ForAll @Negative long value) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> Distance.fromMeters(value))
-                    .withMessage("Distance must be positive (input value: %s)", value);
+                    .withMessage("Distance must be positive (input value: %s meters)", value);
+        }
+
+        @Property
+        void should_initialize_from_valid_value_in_kilometers(@ForAll @DoubleRange @Scale(3) double value) {
+            assertThat(Distance.fromKilometers(value).asMeters()).isEqualTo(toMetersWithNoDecimal(value));
+        }
+
+        @Property
+        void should_fail_to_initialize_from_negative_value_in_kilometers(@ForAll @Negative double value) {
+            assertThatIllegalArgumentException()
+                    .isThrownBy(() -> Distance.fromKilometers(value))
+                    .withMessage("Distance must be positive (input value: %s km)", value);
+        }
+
+        private long toMetersWithNoDecimal(final double kilometers) {
+            return Double.valueOf(kilometers * 1000).longValue();
         }
     }
 

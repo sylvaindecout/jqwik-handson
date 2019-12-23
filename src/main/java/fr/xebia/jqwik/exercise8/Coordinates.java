@@ -24,8 +24,8 @@ final class Coordinates {
                 + cos(this.latitude.asRadians()) * cos(coordinates.latitude.asRadians())
                 * sin(lngDistance / 2) * sin(lngDistance / 2);
         final double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-        final double distanceMeters = EARTH_RADIUS * c * 1_000;
-        return Distance.fromMeters(Double.valueOf(distanceMeters).longValue());
+        final double distanceMeters = EARTH_RADIUS * c;
+        return Distance.fromKilometers(distanceMeters);
     }
 
 }
