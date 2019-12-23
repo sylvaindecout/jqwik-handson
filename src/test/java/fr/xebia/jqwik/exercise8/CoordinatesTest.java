@@ -3,11 +3,10 @@ package fr.xebia.jqwik.exercise8;
 import net.jqwik.api.ForAll;
 import net.jqwik.api.Group;
 import net.jqwik.api.Property;
-import net.jqwik.api.constraints.DoubleRange;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 class CoordinatesTest {
 
@@ -20,49 +19,31 @@ class CoordinatesTest {
     class Initialization {
 
         @Property
-        void should_fail_to_initialize_from_latitude_below_0_degrees(@ForAll @DoubleRange(min = -Double.MAX_VALUE, max = -0.001) double lat,
-                                                                     @ForAll @DoubleRange(min = -180, max = 180) double lng) {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Coordinates.fromDegrees(lat, lng))
-                    .withMessage("Latitude must be in [0.0..90.0]° (input value: %s°)", lat);
+        void should_fail_to_initialize_from_null_latitude(@ForAll Longitude lng) {
+            assertThatNullPointerException()
+                    .isThrownBy(() -> new Coordinates(null, lng));
         }
 
         @Property
-        void should_fail_to_initialize_from_latitude_above_90_degrees(@ForAll @DoubleRange(min = 90.001) double lat,
-                                                                      @ForAll @DoubleRange(min = -180, max = 180) double lng) {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Coordinates.fromDegrees(lat, lng))
-                    .withMessage("Latitude must be in [0.0..90.0]° (input value: %s°)", lat);
+        void should_fail_to_initialize_from_null_latitude(@ForAll Latitude lat) {
+            assertThatNullPointerException()
+                    .isThrownBy(() -> new Coordinates(lat, null));
         }
 
         @Property
-        void should_fail_to_initialize_from_longitude_below_minus_180_degrees(@ForAll @DoubleRange(min = 0, max = 90) double lat,
-                                                                              @ForAll @DoubleRange(min = -Double.MAX_VALUE, max = -180) double lng) {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Coordinates.fromDegrees(lat, lng))
-                    .withMessage("Longitude must be in (-180.0..180.0]° (input value: %s°)", lng);
+        void should_expose_latitude(@ForAll Latitude lat, @ForAll Longitude lng) {
+            assertThat(new Coordinates(lat, lng).getLatitude()).isEqualTo(lat);
         }
 
         @Property
-        void should_fail_to_initialize_from_longitude_above_180_degrees(@ForAll @DoubleRange(min = 0, max = 90) double lat,
-                                                                        @ForAll @DoubleRange(min = 180.001) double lng) {
-            assertThatIllegalArgumentException()
-                    .isThrownBy(() -> Coordinates.fromDegrees(lat, lng))
-                    .withMessage("Longitude must be in (-180.0..180.0]° (input value: %s°)", lng);
+        void should_expose_longitude(@ForAll Latitude lat, @ForAll Longitude lng) {
+            assertThat(new Coordinates(lat, lng).getLongitude()).isEqualTo(lng);
         }
 
         @Property
-        void should_expose_latitude(@ForAll @DoubleRange(min = 0, max = 90) double lat,
-                                    @ForAll @DoubleRange(min = -179.999, max = 180) double lng) {
-            assertThat(Coordinates.fromDegrees(lat, lng).getLatitude())
-                    .isEqualTo(new Coordinates.Latitude(lat));
-        }
-
-        @Property
-        void should_expose_longitude(@ForAll @DoubleRange(min = 0, max = 90) double lat,
-                                     @ForAll @DoubleRange(min = -179.999, max = 180) double lng) {
-            assertThat(Coordinates.fromDegrees(lat, lng).getLongitude())
-                    .isEqualTo(new Coordinates.Longitude(lng));
+        void should_initialize_from_values_in_degrees(@ForAll Latitude lat, @ForAll Longitude lng) {
+            assertThat(Coordinates.fromDegrees(lat.asDegrees(), lng.asDegrees()))
+                    .isEqualTo(new Coordinates(lat, lng));
         }
     }
 
@@ -74,12 +55,12 @@ class CoordinatesTest {
      */
     @Test
     void should_compute_distance_between_Chateaudun_and_Tours() {
-        assertThat(CHATEAUDUN.distanceTo(TOURS)).isEqualTo(new Distance(91_768));
+        assertThat(CHATEAUDUN.distanceTo(TOURS)).isEqualTo(Distance.fromMeters(91_768));
     }
 
     @Test
     void should_compute_distance_between_Ulm_and_Bremen() {
-        assertThat(ULM.distanceTo(BREMEN)).isEqualTo(new Distance(526_641));
+        assertThat(ULM.distanceTo(BREMEN)).isEqualTo(Distance.fromMeters(526_641));
     }
 
 }

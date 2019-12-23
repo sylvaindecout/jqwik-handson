@@ -1,45 +1,51 @@
 package fr.xebia.jqwik.exercise8;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.String.format;
+import static lombok.AccessLevel.PRIVATE;
 
-@Value
+@EqualsAndHashCode
+@AllArgsConstructor(access = PRIVATE)
 final class Distance {
 
-    public static final Distance ZERO = new Distance(0);
-    public static final Distance ERROR = new Distance(0, true);
+    public static final Distance ZERO = new Distance(0, false);
+    public static final Distance ERROR = new Distance(-1, true);
 
-    long meters;
-    boolean error;
+    private final long meters;
+    private final boolean error;
 
-    private Distance(final long meters, final boolean error) {
+    static Distance fromMeters(final long meters) {
         checkArgument(meters >= 0,
                 "Distance must be positive (input value: %s)", meters);
-        this.meters = meters;
-        this.error = error;
+        return new Distance(meters, false);
     }
 
-    public Distance(final long meters) {
-        this(meters, false);
+    long asMeters() {
+        return this.meters;
+    }
+
+    boolean isError() {
+        return this.error;
     }
 
     Distance minus(final Distance distance) {
-        return this.error || distance.error || distance.isGreaterThan(this)
+        return this.isError() || distance.isError() || distance.isGreaterThan(this)
                 ? ERROR
-                : new Distance(this.meters - distance.meters);
+                : Distance.fromMeters(this.asMeters() - distance.asMeters());
     }
 
     public boolean isGreaterThan(final Distance distance) {
-        return !this.error
-                && !distance.error
-                && this.meters > distance.meters;
+        return !this.isError()
+                && !distance.isError()
+                && this.asMeters() > distance.asMeters();
     }
 
     @Override
     public String toString() {
-        return this.error ? "ERROR"
-                : format("%s meters", this.meters);
+        return this.isError() ? "ERROR"
+                : format("%s meters", this.asMeters());
     }
 }

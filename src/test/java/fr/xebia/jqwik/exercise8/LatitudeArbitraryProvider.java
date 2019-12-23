@@ -7,24 +7,20 @@ import net.jqwik.api.providers.TypeUsage;
 import java.util.Set;
 
 import static java.util.Collections.singleton;
-import static net.jqwik.api.Arbitraries.defaultFor;
-import static net.jqwik.api.Combinators.combine;
+import static net.jqwik.api.Arbitraries.doubles;
 
-public final class CoordinatesArbitraryProvider
+public final class LatitudeArbitraryProvider
         implements ArbitraryProvider {
 
     @Override
     public boolean canProvideFor(final TypeUsage targetType) {
-        return targetType.isOfType(Coordinates.class);
+        return targetType.isOfType(Latitude.class);
     }
 
     @Override
     public Set<Arbitrary<?>> provideFor(final TypeUsage targetType, final SubtypeProvider subtypeProvider) {
         return singleton(
-                combine(
-                        defaultFor(Latitude.class),
-                        defaultFor(Longitude.class)
-                ).as(Coordinates::new)
+                doubles().between(0, 90).map(Latitude::fromDegrees)
         );
     }
 }

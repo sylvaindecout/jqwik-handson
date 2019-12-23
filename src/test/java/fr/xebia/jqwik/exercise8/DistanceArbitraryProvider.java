@@ -20,7 +20,7 @@ public final class DistanceArbitraryProvider
     @Override
     public Set<Arbitrary<?>> provideFor(final TypeUsage targetType, final SubtypeProvider subtypeProvider) {
         return singleton(
-                longs().greaterOrEqual(0).map(Distance::new)
+                longs().greaterOrEqual(0).map(Distance::fromMeters)
         );
     }
 }

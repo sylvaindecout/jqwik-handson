@@ -19,13 +19,13 @@ class DistanceTest {
 
         @Property
         void should_initialize_from_valid_value_in_meters(@ForAll @LongRange long value) {
-            assertThat(new Distance(value).getMeters()).isEqualTo(value);
+            assertThat(Distance.fromMeters(value).asMeters()).isEqualTo(value);
         }
 
         @Property
         void should_fail_to_initialize_from_negative_value(@ForAll @Negative long value) {
             assertThatIllegalArgumentException()
-                    .isThrownBy(() -> new Distance(value))
+                    .isThrownBy(() -> Distance.fromMeters(value))
                     .withMessage("Distance must be positive (input value: %s)", value);
         }
     }
@@ -45,22 +45,22 @@ class DistanceTest {
 
         @Property
         void should_not_consider_distance_as_greater_than_greater_distance(@ForAll Distance distance, @ForAll Distance otherDistance) {
-            Assume.that(distance.getMeters() < otherDistance.getMeters());
+            Assume.that(distance.asMeters() < otherDistance.asMeters());
 
             assertThat(distance.isGreaterThan(otherDistance)).isFalse();
         }
 
         @Property
         void should_not_consider_distance_as_greater_than_equal_distance(@ForAll @LongRange long value) {
-            final Distance distance = new Distance(value);
-            final Distance otherDistance = new Distance(value);
+            final Distance distance = Distance.fromMeters(value);
+            final Distance otherDistance = Distance.fromMeters(value);
 
             assertThat(distance.isGreaterThan(otherDistance)).isFalse();
         }
 
         @Property
         void should_consider_distance_as_greater_than_lesser_distance(@ForAll Distance distance, @ForAll Distance otherDistance) {
-            Assume.that(distance.getMeters() > otherDistance.getMeters());
+            Assume.that(distance.asMeters() > otherDistance.asMeters());
 
             assertThat(distance.isGreaterThan(otherDistance)).isTrue();
         }
@@ -81,25 +81,25 @@ class DistanceTest {
 
         @Property
         void should_fail_to_subtract_distance_from_lesser_distance(@ForAll Distance distance, @ForAll Distance otherDistance) {
-            Assume.that(distance.getMeters() < otherDistance.getMeters());
+            Assume.that(distance.asMeters() < otherDistance.asMeters());
 
             assertThat(distance.minus(otherDistance)).isEqualTo(ERROR);
         }
 
         @Property
         void should_subtract_distance_from_equal_distance(@ForAll @LongRange long value) {
-            final Distance distance = new Distance(value);
-            final Distance otherDistance = new Distance(value);
+            final Distance distance = Distance.fromMeters(value);
+            final Distance otherDistance = Distance.fromMeters(value);
 
             assertThat(distance.minus(otherDistance)).isEqualTo(ZERO);
         }
 
         @Property
         void should_subtract_distance_from_greater_distance(@ForAll Distance distance, @ForAll Distance otherDistance) {
-            Assume.that(distance.getMeters() > otherDistance.getMeters());
+            Assume.that(distance.asMeters() > otherDistance.asMeters());
 
-            assertThat(distance.minus(otherDistance).getMeters())
-                    .isEqualTo(distance.getMeters() - otherDistance.getMeters());
+            assertThat(distance.minus(otherDistance).asMeters())
+                    .isEqualTo(distance.asMeters() - otherDistance.asMeters());
         }
     }
 
@@ -109,7 +109,7 @@ class DistanceTest {
         @Property
         void should_display_distance_as_meters(@ForAll Distance distance) {
             assertThat(distance.toString())
-                    .isEqualTo("%s meters", distance.getMeters());
+                    .isEqualTo("%s meters", distance.asMeters());
         }
 
         @Property
