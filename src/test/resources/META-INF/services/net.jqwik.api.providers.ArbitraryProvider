@@ -16,3 +16,5 @@ fr.xebia.jqwik.exercise8.geo.CoordinatesArbitraryProvider
 fr.xebia.jqwik.exercise8.geo.DistanceArbitraryProvider
 fr.xebia.jqwik.exercise8.geo.LatitudeArbitraryProvider
 fr.xebia.jqwik.exercise8.geo.LongitudeArbitraryProvider
+
+fr.xebia.jqwik.exercise9.ServiceParametersArbitraryProvider
