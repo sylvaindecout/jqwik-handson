@@ -18,6 +18,7 @@ Prerequisite: Java 8+
 6. Dependent parameters
 7. Configuration
 8. Borderline cases
+9. Stateful testing
 
 ### 1. Basic properties
 Create property-based tests for a method with null-checks.
@@ -49,3 +50,8 @@ Define property-based tests in a case for which it is not so straightforward.
 Consider trade-offs and how you may want to use property-based testing in conjunction with example-based testing.
 
 ![Use case: Borderline cases](docs/images/UseCase-Exercise8.png)
+
+### 9. Stateful testing
+Leverage property-based testing for a basic state machine.
+
+![Use case: Stateful testing](docs/images/UseCase-Exercise9.png)
