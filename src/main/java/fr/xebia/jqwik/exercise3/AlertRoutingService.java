@@ -1,13 +1,18 @@
 package fr.xebia.jqwik.exercise3;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 class AlertRoutingService {
 
     private final NotificationServiceForItaly notificationServiceForItaly;
     private final NotificationServiceForUsa notificationServiceForUsa;
     private final DefaultNotificationService defautNotificationService;
+
+    AlertRoutingService(final NotificationServiceForItaly notificationServiceForItaly,
+                        final NotificationServiceForUsa notificationServiceForUsa,
+                        final DefaultNotificationService defautNotificationService) {
+        this.notificationServiceForItaly = notificationServiceForItaly;
+        this.notificationServiceForUsa = notificationServiceForUsa;
+        this.defautNotificationService = defautNotificationService;
+    }
 
     void send(final Alert alert) {
         switch (alert.getCountry()) {
