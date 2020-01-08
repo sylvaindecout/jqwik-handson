@@ -1,13 +1,12 @@
 package fr.xebia.jqwik.exercise6;
 
-import lombok.Value;
+import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-@Value
 final class VehicleType {
 
-    int code;
+    private final int code;
 
     VehicleType(final int code) {
         checkArgument(code > -1,
@@ -17,4 +16,27 @@ final class VehicleType {
         this.code = code;
     }
 
+    int getCode() {
+        return code;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VehicleType that = (VehicleType) o;
+        return code == that.code;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
+    }
+
+    @Override
+    public String toString() {
+        return "VehicleType{" +
+                "code=" + code +
+                '}';
+    }
 }
