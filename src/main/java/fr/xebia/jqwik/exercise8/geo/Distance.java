@@ -1,14 +1,10 @@
 package fr.xebia.jqwik.exercise8.geo;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.String.format;
-import static lombok.AccessLevel.PRIVATE;
 
-@EqualsAndHashCode
-@AllArgsConstructor(access = PRIVATE)
 public final class Distance {
 
     public static final Distance ZERO = new Distance(0, false);
@@ -16,6 +12,11 @@ public final class Distance {
 
     private final long meters;
     private final boolean error;
+
+    private Distance(final long meters, final boolean error) {
+        this.meters = meters;
+        this.error = error;
+    }
 
     public static Distance fromMeters(final long meters) {
         checkArgument(meters >= 0,
@@ -48,6 +49,20 @@ public final class Distance {
         return !this.isError()
                 && !distance.isError()
                 && this.asMeters() > distance.asMeters();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Distance distance = (Distance) o;
+        return meters == distance.meters &&
+                error == distance.error;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(meters, error);
     }
 
     @Override
