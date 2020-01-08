@@ -1,22 +1,24 @@
 package fr.xebia.jqwik.exercise9.breaker;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkState;
 import static fr.xebia.jqwik.exercise9.breaker.CircuitBreaker.Status.*;
-import static lombok.AccessLevel.PRIVATE;
 
-@Data
-@AllArgsConstructor(access = PRIVATE)
 public class CircuitBreaker {
 
     public enum Status {OPEN, HALF_OPEN, CLOSED}
 
-    Status status;
-    int failuresCount;
+    private Status status;
+    private int failuresCount;
 
-    final int failuresThreshold;
+    private final int failuresThreshold;
+
+    private CircuitBreaker(final Status status, final int failuresCount, final int failuresThreshold) {
+        this.status = status;
+        this.failuresCount = failuresCount;
+        this.failuresThreshold = failuresThreshold;
+    }
 
     public static CircuitBreaker withThreshold(final int threshold) {
         return new CircuitBreaker(CLOSED, 0, threshold);
@@ -44,4 +46,39 @@ public class CircuitBreaker {
         this.status = HALF_OPEN;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public int getFailuresCount() {
+        return failuresCount;
+    }
+
+    public int getFailuresThreshold() {
+        return failuresThreshold;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CircuitBreaker that = (CircuitBreaker) o;
+        return failuresCount == that.failuresCount &&
+                failuresThreshold == that.failuresThreshold &&
+                status == that.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, failuresCount, failuresThreshold);
+    }
+
+    @Override
+    public String toString() {
+        return "CircuitBreaker{" +
+                "status=" + status +
+                ", failuresCount=" + failuresCount +
+                ", failuresThreshold=" + failuresThreshold +
+                '}';
+    }
 }
