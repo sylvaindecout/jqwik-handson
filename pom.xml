@@ -27,6 +27,7 @@
         <!-- Maven plug-in versions -->
         <pitest-maven-plugin.version>1.4.10</pitest-maven-plugin.version>
         <pitest-junit5-plugin.version>0.10</pitest-junit5-plugin.version>
+        <surefire-plugin.version>2.22.2</surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -84,6 +85,10 @@
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire-plugin.version}</version>
+            </plugin>
             <!-- Mutation coverage -->
             <plugin>
                 <groupId>org.pitest</groupId>
