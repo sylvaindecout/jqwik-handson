@@ -4,6 +4,12 @@
 Clone project locally:
 `git clone https://github.com/sylvaindecout/jqwik-handson.git`
 
+Run tests:
+`./mvnw clean test`
+
+Run mutation coverage:
+`./mvnw org.pitest:pitest-maven:mutationCoverage`
+
 A dedicated package is available in test folder for each exercise.
 Instructions are available as TODO tasks.
 
