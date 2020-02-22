@@ -37,12 +37,12 @@ class ContractTest {
         assertThat(contract.covers(incident)).isFalse();
     }
 
-    @Disabled
+    @Disabled("Don't forget to remove this annotation!")
     /**
      * TODO: Fix test so that it succeeds.
      * <hr/>
-     * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
-     * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#flat-mapping-with-tuple-types">Flat Mapping with Tuple Types</a></p>
+     * <p>Hint #1: Understand what it means for a property to be "exhausted". Cf. <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
+     * <p>Hint #2: Group "contract" and "incident" arguments into a consistent "Tuple". Cf. <a href="https://jqwik.net/docs/current/user-guide.html#flat-mapping-with-tuple-types">Flat Mapping with Tuple Types</a></p>
      */
     @Property
     void should_cover_incident_matching_coverage(@ForAll Contract contract, @ForAll Incident incident) {

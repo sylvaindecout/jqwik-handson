@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.*;
 /**
  * TODO: Replace Example-Based Testing with Property-Based Testing.
  * <hr/>
- * <p>Hint: <a href="https://jqwik.net/docs/current/user-guide.html#constraining-default-generation">Constraining default generation</a></p>
+ * <p>Hint: Use annotations in order to apply constraints to parameter generation. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#constraining-default-generation">Constraining default generation</a></p>
  */
 class CountryTest {
 

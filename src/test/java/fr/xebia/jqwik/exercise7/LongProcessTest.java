@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * TODO: Replace Example-Based Testing with Property-Based Testing and make test execution time acceptable.
  * <hr/>
- * <p>Hint: <a href="https://jqwik.net/docs/current/user-guide.html#optional-property-parameters">Optional property parameters</a></p>
+ * <p>Hint: Have a look at what you can configure for any given property. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#optional-property-parameters">Optional property parameters</a></p>
  */
 class LongProcessTest {
 

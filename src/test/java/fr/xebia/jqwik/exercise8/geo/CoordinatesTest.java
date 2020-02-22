@@ -52,10 +52,10 @@ class CoordinatesTest {
     }
 
     /**
-     * TODO #2: Test distance resolution as well as possible by relying on Jqwik without duplicating the solution into the test.
+     * TODO #2/2: Test distance resolution as well as possible by relying on Jqwik without duplicating the solution into the test.
      * <hr/>
-     * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#creating-an-example-based-test">Creating an Example-based Test</a></p>
-     * <p>Hint #2: Consider the properties of the operation (does it work for all sets of coordinates, is it commutative, etc.)</p>
+     * <p>Hint #1: Accept that Property-Based Testing is not always the best way. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#creating-an-example-based-test">Creating an Example-based Test</a></p>
+     * <p>Hint #2: You should consider other properties, for which examples were not relevant. For instance, does the operation work for all sets of coordinates? Is it commutative? etc.</p>
      */
     @Test
     void should_compute_distance_between_Chateaudun_and_Tours() {

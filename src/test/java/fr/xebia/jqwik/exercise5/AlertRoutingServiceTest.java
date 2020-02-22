@@ -43,8 +43,8 @@ class AlertRoutingServiceTest {
     /**
      * TODO: Define alert as an argument to the test method, instead of type and country.
      * <hr/>
-     * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#combining-arbitraries">Combining arbitraries</a></p>
-     * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#create-your-own-annotations-for-arbitrary-configuration">Create your own annotations for arbitrary configuration</a></p>
+     * <p>Hint #1: Define a provider class in order to generate parameter depending on already-existing providers. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#combining-arbitraries">Combining arbitraries</a></p>
+     * <p>Hint #2: You can define a custom annotation in order to generate alerts for standard countries only. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#create-your-own-annotations-for-arbitrary-configuration">Create your own annotations for arbitrary configuration</a></p>
      */
     @Property
     void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type, @ForAll Country country) {
