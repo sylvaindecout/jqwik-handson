@@ -40,7 +40,7 @@ class ContractTest {
     @Disabled
     /**
      * TODO: Fix test so that it succeeds.
-     * <br/>
+     * <hr/>
      * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
      * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#flat-mapping-with-tuple-types">Flat Mapping with Tuple Types</a></p>
      */

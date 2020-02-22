@@ -53,7 +53,7 @@ class CoordinatesTest {
 
     /**
      * TODO #2: Test distance resolution as well as possible by relying on Jqwik without duplicating the solution into the test.
-     * <br/>
+     * <hr/>
      * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#creating-an-example-based-test">Creating an Example-based Test</a></p>
      * <p>Hint #2: Consider the properties of the operation (does it work for all sets of coordinates, is it commutative, etc.)</p>
      */

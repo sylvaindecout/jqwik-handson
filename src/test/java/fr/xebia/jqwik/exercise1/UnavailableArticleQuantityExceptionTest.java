@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 /**
  * TODO: Replace Example-Based Testing with Property-Based Testing.
- * <br/>
+ * <hr/>
  * <p>Hint: <a href="https://jqwik.net/docs/current/user-guide.html#creating-a-property">Creating a property</a></p>
  */
 class UnavailableArticleQuantityExceptionTest {

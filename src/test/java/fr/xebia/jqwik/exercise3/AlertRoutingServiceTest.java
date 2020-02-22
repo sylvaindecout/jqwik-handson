@@ -38,7 +38,7 @@ class AlertRoutingServiceTest {
 
     /**
      * TODO: Add country as an argument of the test method, so that the test does not rely on an example.
-     * <br/>
+     * <hr/>
      * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#parameter-provider-methods">Parameter provider methods</a></p>
      * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#filtering">Filtering</a></p>
      */
