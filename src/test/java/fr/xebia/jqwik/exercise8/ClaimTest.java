@@ -10,8 +10,9 @@ import static fr.xebia.jqwik.exercise8.IncidentType.ACCIDENT;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * TODO #1: Replace Example-Based Testing with Property-Based Testing.
- * Consider how much of the solution you should accept duplicating in the test.
+ * TODO #1/2: Replace Example-Based Testing with Property-Based Testing.
+ * <br/>
+ * Especially take some time to ponder how much of the tested code (eq. the solution) you should accept duplicating in the test.
  */
 class ClaimTest {
 

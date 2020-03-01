@@ -40,10 +40,10 @@ class AlertRoutingServiceTest {
     }
 
     /**
-     * TODO: Add country as an argument of the test method, so that the test does not rely on an example.
-     * <br/>
-     * <p>Hint #1: <a href="https://jqwik.net/docs/current/user-guide.html#simple-arbitrary-providers">Simple arbitrary providers</a></p>
-     * <p>Hint #2: <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
+     * TODO: Replace 'country' variable by adding an argument to the test method, so that the test does not rely on an example (new Country("JP")) anymore.
+     * <hr/>
+     * <p>Hint #1: Define a provider class in order to generate parameter with non-primitive type. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#simple-arbitrary-providers">Simple arbitrary providers</a></p>
+     * <p>Hint #2: You can use assumptions in order to skip generated values that do not match standard countries. Cf. <a href="https://jqwik.net/docs/current/user-guide.html#assumptions">Assumptions</a></p>
      */
     @Property
     void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type) {
