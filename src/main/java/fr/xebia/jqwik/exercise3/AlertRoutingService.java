@@ -4,14 +4,14 @@ class AlertRoutingService {
 
     private final NotificationServiceForItaly notificationServiceForItaly;
     private final NotificationServiceForUsa notificationServiceForUsa;
-    private final DefaultNotificationService defautNotificationService;
+    private final DefaultNotificationService defaultNotificationService;
 
     AlertRoutingService(final NotificationServiceForItaly notificationServiceForItaly,
                         final NotificationServiceForUsa notificationServiceForUsa,
-                        final DefaultNotificationService defautNotificationService) {
+                        final DefaultNotificationService defaultNotificationService) {
         this.notificationServiceForItaly = notificationServiceForItaly;
         this.notificationServiceForUsa = notificationServiceForUsa;
-        this.defautNotificationService = defautNotificationService;
+        this.defaultNotificationService = defaultNotificationService;
     }
 
     void send(final Alert alert) {
@@ -26,7 +26,7 @@ class AlertRoutingService {
                 break;
             default:
                 final String defaultMessage = alert.getType().getDefaultMessage();
-                this.defautNotificationService.notify(defaultMessage);
+                this.defaultNotificationService.notify(defaultMessage);
         }
     }
 
