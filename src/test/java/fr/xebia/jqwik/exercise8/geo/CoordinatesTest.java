@@ -88,7 +88,7 @@ class CoordinatesTest {
         }
 
         @Property
-        void should_fail_to_initialize_from_value_above_90(@ForAll @DoubleRange(min = 90.001) double value) {
+        void should_fail_to_initialize_from_value_above_90(@ForAll @DoubleRange(min = 90, minIncluded = false) double value) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> Latitude.fromDegrees(value))
                     .withMessage("Latitude must be in [0.0..90.0]° (input value: %s°)", value);
@@ -105,12 +105,12 @@ class CoordinatesTest {
     class LongitudeTest {
 
         @Property
-        void should_expose_value_in_degrees(@ForAll @DoubleRange(min = -179.999, max = 180) double value) {
+        void should_expose_value_in_degrees(@ForAll @DoubleRange(min = -180, minIncluded = false, max = 180) double value) {
             assertThat(Longitude.fromDegrees(value).asDegrees()).isEqualTo(value);
         }
 
         @Property
-        void should_expose_value_in_radians(@ForAll @DoubleRange(min = -179.999, max = 180) double value) {
+        void should_expose_value_in_radians(@ForAll @DoubleRange(min = -180, minIncluded = false, max = 180) double value) {
             assertThat(Longitude.fromDegrees(value).asRadians()).isEqualTo(toRadians(value));
         }
 
@@ -122,7 +122,7 @@ class CoordinatesTest {
         }
 
         @Property
-        void should_fail_to_initialize_from_value_above_90(@ForAll @DoubleRange(min = 180.001) double value) {
+        void should_fail_to_initialize_from_value_above_90(@ForAll @DoubleRange(min = 180, minIncluded = false) double value) {
             assertThatIllegalArgumentException()
                     .isThrownBy(() -> Longitude.fromDegrees(value))
                     .withMessage("Longitude must be in (-180.0..180.0]° (input value: %s°)", value);
