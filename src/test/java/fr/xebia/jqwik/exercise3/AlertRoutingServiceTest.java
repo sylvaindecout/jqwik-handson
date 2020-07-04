@@ -28,8 +28,8 @@ class AlertRoutingServiceTest {
         routingService.send(alert);
 
         then(notificationServiceForItaly).should().notify(type.getCodeForItaly());
-        then(notificationServiceForUsa).shouldHaveZeroInteractions();
-        then(defaultNotificationService).shouldHaveZeroInteractions();
+        then(notificationServiceForUsa).shouldHaveNoInteractions();
+        then(defaultNotificationService).shouldHaveNoInteractions();
     }
 
     @Property
@@ -38,9 +38,9 @@ class AlertRoutingServiceTest {
 
         routingService.send(alert);
 
-        then(notificationServiceForItaly).shouldHaveZeroInteractions();
+        then(notificationServiceForItaly).shouldHaveNoInteractions();
         then(notificationServiceForUsa).should().notify(type.getCodeForUsa());
-        then(defaultNotificationService).shouldHaveZeroInteractions();
+        then(defaultNotificationService).shouldHaveNoInteractions();
     }
 
     /**
@@ -56,8 +56,8 @@ class AlertRoutingServiceTest {
 
         routingService.send(alert);
 
-        then(notificationServiceForItaly).shouldHaveZeroInteractions();
-        then(notificationServiceForUsa).shouldHaveZeroInteractions();
+        then(notificationServiceForItaly).shouldHaveNoInteractions();
+        then(notificationServiceForUsa).shouldHaveNoInteractions();
         then(defaultNotificationService).should().notify(type.getDefaultMessage());
     }
 
