@@ -1,6 +1,6 @@
 # Hands-on: Property-Based Testing in Java with Jqwik
 
-![Execute tests](https://github.com/sylvaindecout/jqwik-handson/workflows/Execute%20tests/badge.svg)
+![Execute tests](https://github.com/sylvaindecout/jqwik-handson/workflows/Execute%20tests/badge.svg?branch=Solutions)
 
 ## How to proceed
 Clone project locally:
