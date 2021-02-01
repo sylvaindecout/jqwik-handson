@@ -131,6 +131,10 @@
                     <targetClasses>
                         <param>fr.xebia.jqwik.*</param>
                     </targetClasses>
+                    <!-- ArchUnit test classes need to be excluded specifically, until ArchUnit supports JUnit tags. -->
+                    <excludedTestClasses>
+                        <param>*.ProjectStructureTest</param>
+                    </excludedTestClasses>
                     <outputFormats>
                         <outputFormat>HTML</outputFormat>
                     </outputFormats>
