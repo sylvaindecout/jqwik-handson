@@ -18,7 +18,7 @@
 
         <!-- Third-party dependency versions -->
         <junit.jupiter.version>5.7.2</junit.jupiter.version>
-        <mockito.version>3.9.0</mockito.version>
+        <mockito.version>3.11.0</mockito.version>
         <assertj.version>3.19.0</assertj.version>
         <jqwik.version>1.5.1</jqwik.version>
         <archunit.version>0.19.0</archunit.version>
