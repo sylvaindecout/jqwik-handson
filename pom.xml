@@ -28,7 +28,7 @@
 
         <!-- Maven plug-in versions -->
         <pitest-maven-plugin.version>1.7.1</pitest-maven-plugin.version>
-        <pitest-junit5-plugin.version>0.14</pitest-junit5-plugin.version>
+        <pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
         <surefire-plugin.version>2.22.2</surefire-plugin.version>
     </properties>
 
