@@ -19,7 +19,7 @@
         <!-- Third-party dependency versions -->
         <junit.jupiter.version>5.7.2</junit.jupiter.version>
         <mockito.version>3.12.4</mockito.version>
-        <assertj.version>3.20.2</assertj.version>
+        <assertj.version>3.21.0</assertj.version>
         <jqwik.version>1.5.6</jqwik.version>
         <archunit.version>0.21.0</archunit.version>
         <guava.version>31.0.1-jre</guava.version>
