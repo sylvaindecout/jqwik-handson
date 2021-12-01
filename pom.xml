@@ -17,7 +17,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Third-party dependency versions -->
-        <junit.jupiter.version>5.8.1</junit.jupiter.version>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <mockito.version>4.1.0</mockito.version>
         <assertj.version>3.21.0</assertj.version>
         <jqwik.version>1.5.6</jqwik.version>
