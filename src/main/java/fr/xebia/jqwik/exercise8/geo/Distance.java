@@ -1,22 +1,12 @@
 package fr.xebia.jqwik.exercise8.geo;
 
-import java.util.Objects;
-
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.String.format;
 
-public final class Distance {
+public record Distance(long asMeters, boolean error) {
 
     public static final Distance ZERO = new Distance(0, false);
     public static final Distance ERROR = new Distance(-1, true);
-
-    private final long meters;
-    private final boolean error;
-
-    private Distance(final long meters, final boolean error) {
-        this.meters = meters;
-        this.error = error;
-    }
 
     public static Distance fromMeters(final long meters) {
         checkArgument(meters >= 0,
@@ -31,43 +21,21 @@ public final class Distance {
         return new Distance(meters, false);
     }
 
-    public long asMeters() {
-        return this.meters;
-    }
-
-    public boolean isError() {
-        return this.error;
-    }
-
     public Distance minus(final Distance distance) {
-        return this.isError() || distance.isError() || distance.isGreaterThan(this)
+        return this.error() || distance.error() || distance.isGreaterThan(this)
                 ? ERROR
                 : Distance.fromMeters(this.asMeters() - distance.asMeters());
     }
 
     public boolean isGreaterThan(final Distance distance) {
-        return !this.isError()
-                && !distance.isError()
+        return !this.error()
+                && !distance.error()
                 && this.asMeters() > distance.asMeters();
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Distance distance = (Distance) o;
-        return meters == distance.meters &&
-                error == distance.error;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(meters, error);
-    }
-
-    @Override
     public String toString() {
-        return this.isError() ? "ERROR"
+        return this.error() ? "ERROR"
                 : format("%s meters", this.asMeters());
     }
 }

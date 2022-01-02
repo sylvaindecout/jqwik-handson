@@ -4,8 +4,6 @@ import fr.xebia.jqwik.exercise8.geo.Coordinates;
 import fr.xebia.jqwik.exercise8.geo.Distance;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
-
 import static fr.xebia.jqwik.exercise8.IncidentType.ACCIDENT;
 import static org.assertj.core.api.Assertions.assertThat;
 

@@ -18,21 +18,21 @@ class ContractTest {
 
     @Property
     void should_not_cover_incident_outside_validity_period(@ForAll Contract contract, @ForAll Incident incident) {
-        Assume.that(!contract.getValiditySpan().contains(incident.getDate()));
+        Assume.that(!contract.validitySpan().contains(incident.date()));
 
         assertThat(contract.covers(incident)).isFalse();
     }
 
     @Property
     void should_not_cover_incident_for_an_unexpected_vehicle_type(@ForAll Contract contract, @ForAll Incident incident) {
-        Assume.that(!contract.getCoveredVehicleTypes().contains(incident.getVehicle().getType()));
+        Assume.that(!contract.coveredVehicleTypes().contains(incident.vehicle().type()));
 
         assertThat(contract.covers(incident)).isFalse();
     }
 
     @Property
     void should_not_cover_incident_in_an_unexpected_country(@ForAll Contract contract, @ForAll Incident incident) {
-        Assume.that(!contract.getCoveredCountries().contains(incident.getCountry()));
+        Assume.that(!contract.coveredCountries().contains(incident.country()));
 
         assertThat(contract.covers(incident)).isFalse();
     }
@@ -46,9 +46,9 @@ class ContractTest {
      */
     @Property
     void should_cover_incident_matching_coverage(@ForAll Contract contract, @ForAll Incident incident) {
-        Assume.that(contract.getValiditySpan().contains(incident.getDate()));
-        Assume.that(contract.getCoveredVehicleTypes().contains(incident.getVehicle().getType()));
-        Assume.that(contract.getCoveredCountries().contains(incident.getCountry()));
+        Assume.that(contract.validitySpan().contains(incident.date()));
+        Assume.that(contract.coveredVehicleTypes().contains(incident.vehicle().type()));
+        Assume.that(contract.coveredCountries().contains(incident.country()));
 
         assertThat(contract.covers(incident)).isTrue();
     }

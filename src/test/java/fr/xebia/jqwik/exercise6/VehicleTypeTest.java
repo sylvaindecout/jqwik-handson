@@ -12,7 +12,7 @@ class VehicleTypeTest {
 
     @Property
     void should_initialize_from_valid_code(@ForAll @IntRange(max = 19) int code) {
-        assertThat(new VehicleType(code).getCode()).isEqualTo(code);
+        assertThat(new VehicleType(code).code()).isEqualTo(code);
     }
 
     @Property

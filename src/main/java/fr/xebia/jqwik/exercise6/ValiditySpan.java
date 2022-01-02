@@ -1,55 +1,16 @@
 package fr.xebia.jqwik.exercise6;
 
 import java.time.Instant;
-import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.util.Objects.requireNonNull;
 
-final class ValiditySpan {
-
-    private final Instant start;
-    private final Instant end;
-
-    private ValiditySpan(final Instant start, final Instant end) {
-        this.start = start;
-        this.end = end;
-    }
+record ValiditySpan(Instant start, Instant end) {
 
     boolean contains(final Instant instant) {
         requireNonNull(instant);
         return !instant.isBefore(this.start)
                 && !instant.isAfter(this.end);
-    }
-
-    Instant getStart() {
-        return start;
-    }
-
-    Instant getEnd() {
-        return end;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ValiditySpan that = (ValiditySpan) o;
-        return Objects.equals(start, that.start) &&
-                Objects.equals(end, that.end);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(start, end);
-    }
-
-    @Override
-    public String toString() {
-        return "ValiditySpan{" +
-                "start=" + start +
-                ", end=" + end +
-                '}';
     }
 
     static WithStartDefined between(final Instant start) {

@@ -11,12 +11,12 @@ class LocationTest {
 
     @Property
     void should_expose_name(@ForAll String name, @ForAll Coordinates coordinates) {
-        assertThat(new Location(name, coordinates).getName()).isEqualTo(name);
+        assertThat(new Location(name, coordinates).name()).isEqualTo(name);
     }
 
     @Property
     void should_expose_coordinates(@ForAll String name, @ForAll Coordinates coordinates) {
-        assertThat(new Location(name, coordinates).getCoordinates()).isEqualTo(coordinates);
+        assertThat(new Location(name, coordinates).coordinates()).isEqualTo(coordinates);
     }
 
     @Property

@@ -23,8 +23,8 @@ class ValiditySpanTest {
             final ValiditySpan validitySpan = between(start).and(end);
 
             assertSoftly(softly -> {
-                softly.assertThat(validitySpan.getStart()).isEqualTo(start);
-                softly.assertThat(validitySpan.getEnd()).isEqualTo(end);
+                softly.assertThat(validitySpan.start()).isEqualTo(start);
+                softly.assertThat(validitySpan.end()).isEqualTo(end);
             });
         }
 
@@ -33,8 +33,8 @@ class ValiditySpanTest {
             final ValiditySpan validitySpan = between(startAndEnd).and(startAndEnd);
 
             assertSoftly(softly -> {
-                softly.assertThat(validitySpan.getStart()).isEqualTo(startAndEnd);
-                softly.assertThat(validitySpan.getEnd()).isEqualTo(startAndEnd);
+                softly.assertThat(validitySpan.start()).isEqualTo(startAndEnd);
+                softly.assertThat(validitySpan.end()).isEqualTo(startAndEnd);
             });
         }
 
@@ -70,34 +70,34 @@ class ValiditySpanTest {
 
         @Property
         void should_contain_value_between_start_date_and_end_date(@ForAll final ValiditySpan validitySpan, @ForAll final Instant value) {
-            Assume.that(value.isAfter(validitySpan.getStart()));
-            Assume.that(value.isBefore(validitySpan.getEnd()));
+            Assume.that(value.isAfter(validitySpan.start()));
+            Assume.that(value.isBefore(validitySpan.end()));
 
             assertThat(validitySpan.contains(value)).isTrue();
         }
 
         @Property
         void should_not_contain_value_before_start_date(@ForAll final ValiditySpan validitySpan, @ForAll final Instant value) {
-            Assume.that(value.isBefore(validitySpan.getStart()));
+            Assume.that(value.isBefore(validitySpan.start()));
 
             assertThat(validitySpan.contains(value)).isFalse();
         }
 
         @Property
         void should_not_contain_value_after_end_date(@ForAll final ValiditySpan validitySpan, @ForAll final Instant value) {
-            Assume.that(value.isAfter(validitySpan.getEnd()));
+            Assume.that(value.isAfter(validitySpan.end()));
 
             assertThat(validitySpan.contains(value)).isFalse();
         }
 
         @Property
         void should_contain_start_date(@ForAll ValiditySpan validitySpan) {
-            assertThat(validitySpan.contains(validitySpan.getStart())).isTrue();
+            assertThat(validitySpan.contains(validitySpan.start())).isTrue();
         }
 
         @Property
         void should_contain_end_date(@ForAll ValiditySpan validitySpan) {
-            assertThat(validitySpan.contains(validitySpan.getEnd())).isTrue();
+            assertThat(validitySpan.contains(validitySpan.end())).isTrue();
         }
     }
 

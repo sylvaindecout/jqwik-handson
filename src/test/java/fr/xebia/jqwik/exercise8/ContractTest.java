@@ -12,7 +12,7 @@ class ContractTest {
 
     @Property
     void should_expose_limit_as_zero_by_default(@ForAll Contract contract, @ForAll IncidentType incidentType) {
-        Assume.that(! contract.getLimits().containsKey(incidentType));
+        Assume.that(! contract.limits().containsKey(incidentType));
         assertThat(contract.getLimit(incidentType)).isEqualTo(ZERO);
     }
 

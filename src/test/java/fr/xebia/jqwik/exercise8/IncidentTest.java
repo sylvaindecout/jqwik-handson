@@ -10,12 +10,12 @@ class IncidentTest {
 
     @Property
     void should_expose_type(@ForAll IncidentType type, @ForAll Location location) {
-        assertThat(new Incident(type, location).getType()).isEqualTo(type);
+        assertThat(new Incident(type, location).type()).isEqualTo(type);
     }
 
     @Property
     void should_expose_location(@ForAll IncidentType type, @ForAll Location location) {
-        assertThat(new Incident(type, location).getLocation()).isEqualTo(location);
+        assertThat(new Incident(type, location).location()).isEqualTo(location);
     }
 
     @Property

@@ -36,12 +36,12 @@ class CoordinatesTest {
 
         @Property
         void should_expose_latitude(@ForAll Latitude lat, @ForAll Longitude lng) {
-            assertThat(new Coordinates(lat, lng).getLatitude()).isEqualTo(lat);
+            assertThat(new Coordinates(lat, lng).latitude()).isEqualTo(lat);
         }
 
         @Property
         void should_expose_longitude(@ForAll Latitude lat, @ForAll Longitude lng) {
-            assertThat(new Coordinates(lat, lng).getLongitude()).isEqualTo(lng);
+            assertThat(new Coordinates(lat, lng).longitude()).isEqualTo(lng);
         }
 
         @Property

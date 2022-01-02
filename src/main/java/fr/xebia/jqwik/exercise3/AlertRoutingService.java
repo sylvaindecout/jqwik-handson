@@ -15,18 +15,19 @@ class AlertRoutingService {
     }
 
     void send(final Alert alert) {
-        switch (alert.getCountry()) {
-            case "IT":
-                final int codeForItaly = alert.getType().getCodeForItaly();
+        switch (alert.country()) {
+            case "IT" -> {
+                final int codeForItaly = alert.type().getCodeForItaly();
                 this.notificationServiceForItaly.notify(codeForItaly);
-                break;
-            case "US":
-                final String codeForUsa = alert.getType().getCodeForUsa();
+            }
+            case "US" -> {
+                final String codeForUsa = alert.type().getCodeForUsa();
                 this.notificationServiceForUsa.notify(codeForUsa);
-                break;
-            default:
-                final String defaultMessage = alert.getType().getDefaultMessage();
+            }
+            default -> {
+                final String defaultMessage = alert.type().getDefaultMessage();
                 this.defaultNotificationService.notify(defaultMessage);
+            }
         }
     }
 

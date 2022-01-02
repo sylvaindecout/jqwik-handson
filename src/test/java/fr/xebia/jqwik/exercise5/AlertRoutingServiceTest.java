@@ -65,7 +65,7 @@ class AlertRoutingServiceTest {
 
         then(notificationServiceForItaly).shouldHaveNoInteractions();
         then(notificationServiceForUsa).shouldHaveNoInteractions();
-        then(defaultNotificationService).should().notify(alert.getType().getDefaultMessage());
+        then(defaultNotificationService).should().notify(alert.type().getDefaultMessage());
     }
 
 }

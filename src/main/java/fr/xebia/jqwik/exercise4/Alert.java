@@ -1,47 +1,12 @@
 package fr.xebia.jqwik.exercise4;
 
-import java.util.Objects;
-
 import static java.util.Objects.requireNonNull;
 
-final class Alert {
+record Alert(Alert.Type type, Country country) {
 
-    private final Type type;
-    private final Country country;
-
-    Alert(final Type type, final Country country) {
-        this.type = requireNonNull(type);
-        this.country = requireNonNull(country);
-    }
-
-    Type getType() {
-        return this.type;
-    }
-
-    Country getCountry() {
-        return this.country;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Alert alert = (Alert) o;
-        return type == alert.type &&
-                Objects.equals(country, alert.country);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(type, country);
-    }
-
-    @Override
-    public String toString() {
-        return "Alert{" +
-                "type=" + type +
-                ", country='" + country + '\'' +
-                '}';
+    Alert {
+        requireNonNull(type);
+        requireNonNull(country);
     }
 
     enum Type {

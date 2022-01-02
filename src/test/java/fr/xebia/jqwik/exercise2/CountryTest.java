@@ -13,7 +13,7 @@ class CountryTest {
 
     @Test
     void should_initialize_from_code_with_exactly_2_characters() {
-        assertThat(new Country("FR").getCode()).isEqualTo("FR");
+        assertThat(new Country("FR").code()).isEqualTo("FR");
     }
 
     @Test

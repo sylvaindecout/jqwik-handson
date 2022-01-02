@@ -12,7 +12,7 @@ class PolicyNumberTest {
 
     @Property
     void should_initialize_from_valid_value(@ForAll @StringLength(min = 6, max = 12) @AlphaChars @NumericChars String value) {
-        assertThat(new PolicyNumber(value).getValue()).isEqualTo(value);
+        assertThat(new PolicyNumber(value).value()).isEqualTo(value);
     }
 
     @Property

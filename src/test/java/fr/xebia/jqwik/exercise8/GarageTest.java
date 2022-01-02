@@ -12,12 +12,12 @@ class GarageTest {
 
     @Property
     void should_expose_name(@ForAll String name, @ForAll Coordinates coordinates) {
-        assertThat(new Garage(name, coordinates).getName()).isEqualTo(name);
+        assertThat(new Garage(name, coordinates).name()).isEqualTo(name);
     }
 
     @Property
     void should_expose_coordinates(@ForAll String name, @ForAll Coordinates coordinates) {
-        assertThat(new Garage(name, coordinates).getCoordinates()).isEqualTo(coordinates);
+        assertThat(new Garage(name, coordinates).coordinates()).isEqualTo(coordinates);
     }
 
     @Property

@@ -11,7 +11,7 @@ class CountryTest {
 
     @Property
     void should_initialize_from_code_with_exactly_2_alpha_characters(@ForAll @StringLength(2) @AlphaChars final String code) {
-        assertThat(new Country(code).getCode()).isEqualTo(code.toUpperCase());
+        assertThat(new Country(code).code()).isEqualTo(code.toUpperCase());
     }
 
     @Property
