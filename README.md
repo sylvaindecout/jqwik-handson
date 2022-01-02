@@ -15,7 +15,7 @@ Run mutation coverage:
 A dedicated package is available in test folder for each exercise.
 Instructions are available as TODO tasks.
 
-Prerequisite: Java 8+
+Prerequisite: Java 17+
 
 ## Exercises
 1. Basic properties
