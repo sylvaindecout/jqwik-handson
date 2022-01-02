@@ -22,43 +22,43 @@ class ClaimTest {
 
     @Test
     void should_resolve_overdistance_if_limit_is_undefined() {
-        final Claim claim = Claim.builder()
+        final var claim = Claim.builder()
                 .incident(new Incident(ACCIDENT, TOUR_EIFFEL))
                 .contract(Contract.builder()
                         .build())
                 .build();
 
-        final Optional<Distance> actual = claim.resolveOverdistance(CHEZ_DEDE);
+        final var actual = claim.resolveOverdistance(CHEZ_DEDE);
 
         assertThat(actual).contains(DISTANCE_FROM_TOUR_EIFFEL_TO_CHEZ_DEDE);
     }
 
     @Test
     void should_resolve_overdistance_if_garage_is_further_than_limit() {
-        final Distance limit = Distance.fromMeters(100_000);
-        final Claim claim = Claim.builder()
+        final var limit = Distance.fromMeters(100_000);
+        final var claim = Claim.builder()
                 .incident(new Incident(ACCIDENT, TOUR_EIFFEL))
                 .contract(Contract.builder()
                         .limit(ACCIDENT, limit)
                         .build())
                 .build();
 
-        final Optional<Distance> actual = claim.resolveOverdistance(CHEZ_DEDE);
+        final var actual = claim.resolveOverdistance(CHEZ_DEDE);
 
         assertThat(actual).contains(DISTANCE_FROM_TOUR_EIFFEL_TO_CHEZ_DEDE.minus(limit));
     }
 
     @Test
     void should_resolve_no_overdistance_if_garage_is_closer_than_limit() {
-        final Distance limit = Distance.fromMeters(500_000);
-        final Claim claim = Claim.builder()
+        final var limit = Distance.fromMeters(500_000);
+        final var claim = Claim.builder()
                 .incident(new Incident(ACCIDENT, TOUR_EIFFEL))
                 .contract(Contract.builder()
                         .limit(ACCIDENT, limit)
                         .build())
                 .build();
 
-        final Optional<Distance> actual = claim.resolveOverdistance(CHEZ_DEDE);
+        final var actual = claim.resolveOverdistance(CHEZ_DEDE);
 
         assertThat(actual).isEmpty();
     }

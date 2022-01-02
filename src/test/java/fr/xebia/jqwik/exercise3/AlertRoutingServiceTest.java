@@ -23,7 +23,7 @@ class AlertRoutingServiceTest {
 
     @Property
     void should_send_alert_to_specific_service_for_Italian_alert(@ForAll Alert.Type type) {
-        final Alert alert = new Alert(type, "IT");
+        final var alert = new Alert(type, "IT");
 
         routingService.send(alert);
 
@@ -34,7 +34,7 @@ class AlertRoutingServiceTest {
 
     @Property
     void should_send_alert_code_to_specific_service_for_US_alert(@ForAll Alert.Type type) {
-        final Alert alert = new Alert(type, "US");
+        final var alert = new Alert(type, "US");
 
         routingService.send(alert);
 
@@ -51,8 +51,8 @@ class AlertRoutingServiceTest {
      */
     @Property
     void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type) {
-        final String country = "JP";
-        final Alert alert = new Alert(type, country);
+        final var country = "JP";
+        final var alert = new Alert(type, country);
 
         routingService.send(alert);
 

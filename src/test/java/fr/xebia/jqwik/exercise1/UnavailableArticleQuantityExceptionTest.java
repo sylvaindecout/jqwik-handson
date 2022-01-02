@@ -17,10 +17,10 @@ class UnavailableArticleQuantityExceptionTest {
 
     @Test
     void should_initialize_exception_with_explicit_message() {
-        final String requestedArticle = "BOOK00001";
-        final int requestedQuantity = 12;
-        final int availableQuantity = 2;
-        final Exception exception = new UnavailableArticleQuantityException(requestedArticle, requestedQuantity, availableQuantity);
+        final var requestedArticle = "BOOK00001";
+        final var requestedQuantity = 12;
+        final var availableQuantity = 2;
+        final var exception = new UnavailableArticleQuantityException(requestedArticle, requestedQuantity, availableQuantity);
         assertThat(exception)
                 .hasMessage("Requested quantity (%s) is unavailable for article '%s' (available: %s)",
                         requestedQuantity, requestedArticle, availableQuantity);

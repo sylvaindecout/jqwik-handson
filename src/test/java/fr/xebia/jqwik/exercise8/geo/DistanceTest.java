@@ -70,8 +70,8 @@ class DistanceTest {
 
         @Property
         void should_not_consider_distance_as_greater_than_equal_distance(@ForAll @LongRange long value) {
-            final Distance distance = Distance.fromMeters(value);
-            final Distance otherDistance = Distance.fromMeters(value);
+            final var distance = Distance.fromMeters(value);
+            final var otherDistance = Distance.fromMeters(value);
 
             assertThat(distance.isGreaterThan(otherDistance)).isFalse();
         }
@@ -106,8 +106,8 @@ class DistanceTest {
 
         @Property
         void should_subtract_distance_from_equal_distance(@ForAll @LongRange long value) {
-            final Distance distance = Distance.fromMeters(value);
-            final Distance otherDistance = Distance.fromMeters(value);
+            final var distance = Distance.fromMeters(value);
+            final var otherDistance = Distance.fromMeters(value);
 
             assertThat(distance.minus(otherDistance)).isEqualTo(ZERO);
         }

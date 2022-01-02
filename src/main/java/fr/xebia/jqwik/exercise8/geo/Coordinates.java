@@ -26,13 +26,13 @@ public final class Coordinates {
     }
 
     public Distance distanceTo(final Coordinates coordinates) {
-        final double latDistance = coordinates.latitude.asRadians() - this.latitude.asRadians();
-        final double lngDistance = coordinates.longitude.asRadians() - this.longitude.asRadians();
-        final double a = sin(latDistance / 2) * sin(latDistance / 2)
+        final var latDistance = coordinates.latitude.asRadians() - this.latitude.asRadians();
+        final var lngDistance = coordinates.longitude.asRadians() - this.longitude.asRadians();
+        final var a = sin(latDistance / 2) * sin(latDistance / 2)
                 + cos(this.latitude.asRadians()) * cos(coordinates.latitude.asRadians())
                 * sin(lngDistance / 2) * sin(lngDistance / 2);
-        final double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-        final double distanceMeters = EARTH_RADIUS * c;
+        final var c = 2 * atan2(sqrt(a), sqrt(1 - a));
+        final var distanceMeters = EARTH_RADIUS * c;
         return Distance.fromKilometers(distanceMeters);
     }
 

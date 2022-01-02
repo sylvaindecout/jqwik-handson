@@ -29,7 +29,7 @@ class AlertRoutingServiceTest {
 
     @Property
     void should_send_alert_to_specific_service_for_Italian_alert(@ForAll Alert.Type type) {
-        final Alert alert = new Alert(type, ITALY);
+        final var alert = new Alert(type, ITALY);
 
         routingService.send(alert);
 
@@ -40,7 +40,7 @@ class AlertRoutingServiceTest {
 
     @Property
     void should_send_alert_code_to_specific_service_for_US_alert(@ForAll Alert.Type type) {
-        final Alert alert = new Alert(type, USA);
+        final var alert = new Alert(type, USA);
 
         routingService.send(alert);
 
@@ -59,7 +59,7 @@ class AlertRoutingServiceTest {
     void should_send_alert_message_to_default_service_for_alert_of_standard_country(@ForAll Alert.Type type, @ForAll Country country) {
         Assume.that(! Objects.equals(country, ITALY));
         Assume.that(! Objects.equals(country, USA));
-        final Alert alert = new Alert(type, country);
+        final var alert = new Alert(type, country);
 
         routingService.send(alert);
 

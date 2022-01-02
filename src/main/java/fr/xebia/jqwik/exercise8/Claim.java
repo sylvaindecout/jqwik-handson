@@ -16,8 +16,8 @@ final class Claim {
     }
 
     Optional<Distance> resolveOverdistance(final Garage destination) {
-        final Distance distance = incident.getLocation().getCoordinates().distanceTo(destination.getCoordinates());
-        final Distance limitDistance = contract.getLimit(incident.getType());
+        final var distance = incident.getLocation().getCoordinates().distanceTo(destination.getCoordinates());
+        final var limitDistance = contract.getLimit(incident.getType());
         return distance.isGreaterThan(limitDistance)
                 ? Optional.of(distance.minus(limitDistance))
                 : Optional.empty();

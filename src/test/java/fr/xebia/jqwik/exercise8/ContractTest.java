@@ -18,7 +18,7 @@ class ContractTest {
 
     @Property
     void should_expose_limit(@ForAll IncidentType incidentType, @ForAll Distance distance) {
-        final Contract contract = Contract.builder()
+        final var contract = Contract.builder()
                 .limit(incidentType, distance)
                 .build();
         assertThat(contract.getLimit(incidentType)).isEqualTo(distance);

@@ -27,7 +27,7 @@ public final class Distance {
     public static Distance fromKilometers(final double kilometers) {
         checkArgument(kilometers >= 0,
                 "Distance must be positive (input value: %s km)", kilometers);
-        final long meters = Double.valueOf(kilometers * 1_000).longValue();
+        final var meters = Double.valueOf(kilometers * 1_000).longValue();
         return new Distance(meters, false);
     }
 

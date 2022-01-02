@@ -19,7 +19,7 @@ final class Proxy {
         if (circuitBreaker.getStatus() == OPEN) {
             return callFailed("Circuit open");
         }
-        final ServiceResult result = remoteService.call(parameters);
+        final var result = remoteService.call(parameters);
         if (result.isFailure()) {
             circuitBreaker.onFailure();
         } else {

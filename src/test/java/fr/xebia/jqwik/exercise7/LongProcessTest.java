@@ -15,7 +15,7 @@ class LongProcessTest {
 
     @Test
     void should_yield_input_parameter() throws InterruptedException {
-        final String parameter = "The parameter";
+        final var parameter = "The parameter";
         assertThat(longProcess.thisProcessIsSoLongYouWouldHardlyBelieveIt(parameter))
                 .isEqualTo(parameter);
     }
