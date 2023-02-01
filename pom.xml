@@ -20,7 +20,7 @@
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <mockito.version>4.11.0</mockito.version>
         <assertj.version>3.23.1</assertj.version>
-        <jqwik.version>1.7.1</jqwik.version>
+        <jqwik.version>1.7.2</jqwik.version>
         <archunit.version>1.0.1</archunit.version>
         <guava.version>31.1-jre</guava.version>
         <slf4j.version>2.0.5</slf4j.version>
