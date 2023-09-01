@@ -24,7 +24,7 @@
         <archunit.version>1.0.1</archunit.version>
         <guava.version>32.1.2-jre</guava.version>
         <slf4j.version>2.0.7</slf4j.version>
-        <logback.version>1.4.8</logback.version>
+        <logback.version>1.4.11</logback.version>
 
         <!-- Maven plug-in versions -->
         <pitest-maven-plugin.version>1.14.2</pitest-maven-plugin.version>
