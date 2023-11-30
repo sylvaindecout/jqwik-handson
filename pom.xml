@@ -27,7 +27,7 @@
         <logback.version>1.4.12</logback.version>
 
         <!-- Maven plug-in versions -->
-        <pitest-maven-plugin.version>1.15.0</pitest-maven-plugin.version>
+        <pitest-maven-plugin.version>1.15.3</pitest-maven-plugin.version>
         <pitest-junit5-plugin.version>1.2.1</pitest-junit5-plugin.version>
         <surefire-plugin.version>3.1.2</surefire-plugin.version>
     </properties>
